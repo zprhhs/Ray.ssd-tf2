@@ -40,6 +40,14 @@ def handle_args():
                         default="mobilenet_v2",
                         metavar="['mobilenet_v2', 'vgg16']",
                         help="Which backbone used for the ssd")
+    parser.add_argument("--batch-size", default=32, type=int)
+    parser.add_argument("--epochs", default=150, type=int)
+    parser.add_argument("--load-weights", default=False, action="store_true")
+    parser.add_argument("--with_voc12", default=True, action="store_true")
+    parser.add_argument("--address",required=False,type=str,help="the address to use for Ray")
+    parser.add_argument("--num-replicas","-n",type=int,default=1,help="Sets number of replicas for training.")
+    parser.add_argument("--use-gpu",action="store_true",default=False,help="Enables GPU training")
+    parser.add_argument("--smoke-test",action="store_true",default=False,help="Finish quickly for testing. Assume False for users.")
     args = parser.parse_args()
     return args
 
